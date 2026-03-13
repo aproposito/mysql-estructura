@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `Optica_culo_botella`.`ventas` (
   `id_cliente` INT NOT NULL,
   PRIMARY KEY (`id_venta`),
   INDEX `idClientes_idx` (`id_cliente` ASC) VISIBLE,
-  CONSTRAINT `idClientes`
+  CONSTRAINT `fk_ventas_cliente`
     FOREIGN KEY (`id_cliente`)
     REFERENCES `Optica_culo_botella`.`clientes` (`id_cliente`)
     ON DELETE NO ACTION

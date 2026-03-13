@@ -17,15 +17,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `pizzeria_mario` DEFAULT CHARACTER SET utf8 ;
 USE `pizzeria_mario` ;
 
--- -----------------------------------------------------
--- Table `pizzeria_mario`.`table1`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `pizzeria_mario`.`table1` ;
-
-CREATE TABLE IF NOT EXISTS `pizzeria_mario`.`table1` (
-)
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `pizzeria_mario`.`cliente`
@@ -145,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `pizzeria_mario`.`pedido` (
     REFERENCES `pizzeria_mario`.`cliente` (`id_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `id_tienda`
+  CONSTRAINT `fk_pedido_tienda`
     FOREIGN KEY (`id_tienda`)
     REFERENCES `pizzeria_mario`.`tienda` (`id_tienda`)
     ON DELETE NO ACTION
@@ -172,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `pizzeria_mario`.`detalle_pedido` (
     REFERENCES `pizzeria_mario`.`producto` (`id_producto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `id_pedido`
+  CONSTRAINT `fk_entrega_pedido`
     FOREIGN KEY (`id_pedido`)
     REFERENCES `pizzeria_mario`.`pedido` (`id_pedido`)
     ON DELETE NO ACTION
